@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import html2canvas from 'html2canvas';
 import './App.css';
+import { ANIMAL_IMAGES } from './animalImages';
 
 const ANIMALS = [
   { id: 'rat',     km: 'ជូត',   en: 'Rat',     emoji: '🐭' },
@@ -146,7 +147,11 @@ export default function App() {
                   onClick={() => setAnimal(a.id)}
                   title={a.en}
                 >
-                  <span className="animal-emoji">{a.emoji}</span>
+                  <img
+                    src={ANIMAL_IMAGES[a.id]}
+                    alt={a.en}
+                    className="animal-silhouette"
+                  />
                   <span className="animal-km">{a.km}</span>
                 </button>
               ))}
@@ -265,7 +270,11 @@ export default function App() {
                 {/* title bottom-left */}
                 <div className="card-title-wrap">
                   <div className="card-animal-row">
-                    <span className="card-animal-emoji">{selectedAnimal?.emoji}</span>
+                    <img
+                      src={ANIMAL_IMAGES[animal]}
+                      alt={selectedAnimal?.en}
+                      className="card-animal-silhouette"
+                    />
                     <span className="card-animal-name">{selectedAnimal?.km} · {selectedAnimal?.en}</span>
                   </div>
                   <div className="card-title">{title}</div>
@@ -275,39 +284,13 @@ export default function App() {
               {/* BOTTOM PANEL */}
               <div className="card-body">
 
-                {/* element + rating */}
-                <div className="card-meta-row">
-                  <div className="card-elem-pill">
-                    <span>{selectedElement?.icon}</span>
-                    <span>ធាតុ{selectedElement?.km} · {selectedElement?.en} Element</span>
-                  </div>
-                  <div className="card-rating" style={{color: selectedRating?.color}}>
-                    {selectedRating?.km}
-                  </div>
-                </div>
-
                 {/* horoscope */}
                 <div className="card-horoscope">
                   <div className="card-horoscope-label">រាសីថ្ងៃនេះ · Today's Reading</div>
                   <p className="card-caption">{caption}</p>
                 </div>
 
-                {/* warning */}
-                {warning && (
-                  <div className="card-warning">
-                    <span className="card-warning-icon">⚠</span>
-                    <span className="card-warning-text">{warning}</span>
-                  </div>
-                )}
 
-                {/* footer */}
-                <div className="card-footer">
-                  <div className="card-footer-brand">
-                    <span className="card-footer-dot" />
-                    <span className="card-footer-name">ហោរាសាស្ត្រខ្មែរ</span>
-                  </div>
-                  <span className="card-footer-stars">✦ ✦ ✦</span>
-                </div>
 
               </div>
             </div>

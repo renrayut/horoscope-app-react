@@ -174,7 +174,16 @@ body {
   background: rgba(255,217,90,0.1);
   box-shadow: 0 0 0 1px var(--accent);
 }
-.animal-emoji { font-size: 20px; }
+.animal-silhouette {
+  width: 38px;
+  height: 34px;
+  object-fit: contain;
+  opacity: 0.45;
+  transition: opacity 0.15s;
+  filter: brightness(0) invert(1);
+}
+.animal-btn:hover .animal-silhouette { opacity: 0.7; }
+.animal-btn.active .animal-silhouette { opacity: 1; filter: brightness(0) saturate(100%) invert(87%) sepia(46%) saturate(500%) hue-rotate(5deg) brightness(103%); }
 .animal-km { font-size: 11px; color: var(--text-muted); }
 .animal-btn.active .animal-km { color: var(--accent); }
 
@@ -365,6 +374,13 @@ body {
   margin-bottom: 6px;
 }
 .card-animal-emoji { font-size: 18px; }
+.card-animal-silhouette {
+  width: 32px;
+  height: 28px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.75;
+}
 .card-animal-name {
   font-size: 11px; letter-spacing: 1.5px;
   color: rgba(160,210,255,0.7);
